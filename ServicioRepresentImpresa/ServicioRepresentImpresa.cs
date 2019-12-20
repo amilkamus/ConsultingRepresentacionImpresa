@@ -17,7 +17,6 @@ namespace ServicioRepresentImpresa
     {
         readonly log4net.ILog log = null;
         Timer temporizador = new Timer();
-
         public ServicioRepresentImpresa()
         {
             InitializeComponent();
