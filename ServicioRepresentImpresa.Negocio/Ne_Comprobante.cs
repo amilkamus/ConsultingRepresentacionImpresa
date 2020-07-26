@@ -58,6 +58,7 @@ namespace ServicioRepresentImpresa.Negocio
         }
         public void GenerarPdf(En_Archivo comprobante)
         {
+            
             string archivoXML = comprobante.Ruta + @"\" + comprobante.NombreXML;
 
             if (!Directory.Exists(comprobante.Ruta)){

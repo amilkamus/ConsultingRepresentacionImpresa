@@ -38,11 +38,11 @@ namespace ServicioRepresentImpresa.Negocio
 
             DataRow fila;
             fila = dtCabecera.NewRow();
-            fila["SerieNumero"] = FnValidarNulo(ocomprobante.ID.Value.ToString());
-            fila["FechaEmision"] = FnValidarNulo(ocomprobante.IssueDate.Value.ToString());
+            fila["SerieNumero"] = FnValidarNulo(ocomprobante.ID.Value);
+            fila["FechaEmision"] = FnValidarNulo(ocomprobante.IssueDate.Value);
             if (ocomprobante.DueDate != null)
             {
-                fila["FechaVencimiento"] = FnValidarNulo(ocomprobante.DueDate.Value.ToString());
+                fila["FechaVencimiento"] = FnValidarNulo(ocomprobante.DueDate.Value);
             }
             if (ocomprobante.InvoiceTypeCode.Value.ToString() == "01") fila["TipoComprobante"] = "FACTURA ELECTRÓNICA";
             if (ocomprobante.InvoiceTypeCode.Value.ToString() == "03") fila["TipoComprobante"] = "BOLETA ELECTRÓNICA";
@@ -73,7 +73,7 @@ namespace ServicioRepresentImpresa.Negocio
                     {
                         if (subTotal.TaxCategory.TaxScheme.Name.Value.ToString() == "IGV")
                         {
-                            fila["IGV"] = FnValidarNulo(subTotal.TaxAmount.Value.ToString());
+                            fila["IGV"] = FnValidarNulo(subTotal.TaxAmount.Value);
                         }
                     }
                 }
@@ -81,8 +81,8 @@ namespace ServicioRepresentImpresa.Negocio
 
             if (ocomprobante.LegalMonetaryTotal != null)
             {
-                fila["TotalValorVentaGravada"] = FnValidarNulo(ocomprobante.LegalMonetaryTotal.LineExtensionAmount.Value.ToString());
-                fila["ImporteTotal"] = FnValidarNulo(ocomprobante.LegalMonetaryTotal.PayableAmount.Value.ToString());
+                fila["TotalValorVentaGravada"] = FnValidarNulo(ocomprobante.LegalMonetaryTotal.LineExtensionAmount.Value);
+                fila["ImporteTotal"] = FnValidarNulo(ocomprobante.LegalMonetaryTotal.PayableAmount.Value);
             }
 
 
@@ -159,13 +159,13 @@ namespace ServicioRepresentImpresa.Negocio
 
             if (ocomprobante.AccountingSupplierParty != null)
             {
-                fila["RucEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyIdentification[0].ID.Value.ToString());
-                fila["RazonSocialEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationName.Value.ToString());
-                fila["NombreComercialEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyName[0].Name.Value.ToString());
-                fila["DepartamentoEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.CountrySubentity.Value.ToString());
-                fila["ProvinciaEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.CityName.Value.ToString());
-                fila["DistritoEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.District.Value.ToString());
-                fila["DireccionEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.AddressLine[0].Line.Value.ToString());
+                fila["RucEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyIdentification[0].ID.Value);
+                fila["RazonSocialEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationName.Value);
+                fila["NombreComercialEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyName[0].Name.Value);
+                fila["DepartamentoEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.CountrySubentity.Value);
+                fila["ProvinciaEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.CityName.Value);
+                fila["DistritoEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.District.Value);
+                fila["DireccionEmisor"] = FnValidarNulo(ocomprobante.AccountingSupplierParty.Party.PartyLegalEntity[0].RegistrationAddress.AddressLine[0].Line.Value);
             }
 
             dtEmisor.Rows.Add(fila);
@@ -190,13 +190,13 @@ namespace ServicioRepresentImpresa.Negocio
 
             if (ocomprobante.AccountingCustomerParty != null)
             {
-                fila["RucReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value.ToString());
-                fila["RazonSocialReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationName.Value.ToString());
-                fila["NombreComercialReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyName[0].Name.Value.ToString());
-                fila["DepartamentoReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.CountrySubentity.Value.ToString());
-                fila["ProvinciaReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.CityName.Value.ToString());
-                fila["DistritoReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.District.Value.ToString());
-                fila["DireccionReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.AddressLine[0].Line.Value.ToString());
+                fila["RucReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyIdentification[0].ID.Value);
+                fila["RazonSocialReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationName.Value);
+                fila["NombreComercialReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyName[0].Name.Value);
+                fila["DepartamentoReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.CountrySubentity.Value);
+                fila["ProvinciaReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.CityName.Value);
+                fila["DistritoReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.District.Value);
+                fila["DireccionReceptor"] = FnValidarNulo(ocomprobante.AccountingCustomerParty.Party.PartyLegalEntity[0].RegistrationAddress.AddressLine[0].Line.Value);
             }
 
             dtReceptor.Rows.Add(fila);
@@ -224,13 +224,13 @@ namespace ServicioRepresentImpresa.Negocio
 
                 foreach (InvoiceLineType detalle in ocomprobante.InvoiceLine)
                 {
-                    fila["Item"] = FnValidarNulo(detalle.ID.Value.ToString());
-                    fila["Descripcion"] = FnValidarNulo(detalle.Item.Description[0].Value.ToString());
+                    fila["Item"] = FnValidarNulo(detalle.ID.Value);
+                    fila["Descripcion"] = FnValidarNulo(detalle.Item.Description[0].Value);
                     fila["UM"] = "UND";
-                    fila["VU"] = FnValidarNulo(detalle.PricingReference.AlternativeConditionPrice[0].PriceAmount.Value.ToString());
-                    fila["PU"] = FnValidarNulo(detalle.PricingReference.AlternativeConditionPrice[0].PriceAmount.Value.ToString());
-                    fila["Cantidad"] = FnValidarNulo(detalle.InvoicedQuantity.Value.ToString());
-                    fila["ImporteSinIGV"] = FnValidarNulo(detalle.LineExtensionAmount.Value.ToString());
+                    fila["VU"] = FnValidarNulo(detalle.PricingReference.AlternativeConditionPrice[0].PriceAmount.Value);
+                    fila["PU"] = FnValidarNulo(detalle.PricingReference.AlternativeConditionPrice[0].PriceAmount.Value);
+                    fila["Cantidad"] = FnValidarNulo(detalle.InvoicedQuantity.Value);
+                    fila["ImporteSinIGV"] = FnValidarNulo(detalle.LineExtensionAmount.Value);
                 }
             }
 
@@ -243,6 +243,9 @@ namespace ServicioRepresentImpresa.Negocio
         {
             try
             {
+                if (valor == null)
+                    return "";
+
                 string cadena = "";
                 if (!String.IsNullOrEmpty(valor.ToString()))
                 {
